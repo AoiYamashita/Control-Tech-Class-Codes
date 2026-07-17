@@ -9,8 +9,10 @@ ret, th = cv2.threshold(gray, 0, 255, cv2.THRESH_OTSU)
 
 cv2.imshow("th",th)
 
-cv2.waitKey(0)
+import numpy as np
 
-while True:
-    if cv2.waitKey(25) & 0xFF == ord('q'):
-        break
+ex_img = np.zeros(image.shape,dtype=np.uint8)
+
+ex_img[th == 255] = image[th == 255]
+
+cv2.imshow("hoge",ex_img)
